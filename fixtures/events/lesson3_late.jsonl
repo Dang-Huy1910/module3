@@ -1,0 +1,1 @@
+{"topic":"customer-activity-events","key":"CUS-003","value":{"event_id":"evt-v-3003","event_type":"ProductViewed","event_version":1,"event_time":"2026-11-02T10:00:45Z","source":"test","customer_id":"CUS-003","session_id":"S-4","product_id":"P-103","device_type":"tablet"}}

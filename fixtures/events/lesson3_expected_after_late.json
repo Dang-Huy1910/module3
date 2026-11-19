@@ -1,0 +1,16 @@
+[
+  {
+    "window_start_utc": "2026-11-02T10:00:00Z",
+    "order_count": 2,
+    "created_order_value_vnd": 399000,
+    "product_view_count": 3,
+    "active_customers": 3
+  },
+  {
+    "window_start_utc": "2026-11-02T10:01:00Z",
+    "order_count": 1,
+    "created_order_value_vnd": 150000,
+    "product_view_count": 1,
+    "active_customers": 1
+  }
+]

@@ -1,0 +1,11 @@
+{
+  "event_id": "evt-view-001",
+  "event_type": "ProductViewed",
+  "event_version": 1,
+  "event_time": "2026-11-02T10:00:08Z",
+  "source": "activity-simulator",
+  "customer_id": "CUS-001",
+  "session_id": "SES-001",
+  "product_id": "P-101",
+  "device_type": "mobile"
+}

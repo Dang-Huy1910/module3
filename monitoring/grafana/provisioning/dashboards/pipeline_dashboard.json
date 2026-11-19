@@ -1,0 +1,84 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 1,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": { "h": 6, "w": 6, "x": 0, "y": 0 },
+      "id": 1,
+      "title": "Service Health (UP)",
+      "type": "stat",
+      "targets": [
+        { "expr": "up{job=\"analytics\"}", "legendFormat": "Analytics Consumer" },
+        { "expr": "up{job=\"kafka-lag\"}", "legendFormat": "Lag Exporter" }
+      ]
+    },
+    {
+      "collapsed": false,
+      "gridPos": { "h": 6, "w": 6, "x": 6, "y": 0 },
+      "id": 2,
+      "title": "Kafka Consumer Lag (records)",
+      "type": "stat",
+      "targets": [
+        { "expr": "sum(bk_kafka_consumer_lag_records{group=\"realtime-analytics-v1\"})", "legendFormat": "Total Lag" }
+      ]
+    },
+    {
+      "collapsed": false,
+      "gridPos": { "h": 6, "w": 6, "x": 12, "y": 0 },
+      "id": 3,
+      "title": "Throughput (events/s)",
+      "type": "stat",
+      "targets": [
+        { "expr": "sum(rate(bk_pipeline_events_total{service=\"analytics\",result=\"accepted\"}[1m]))", "legendFormat": "Accepted/s" }
+      ]
+    },
+    {
+      "collapsed": false,
+      "gridPos": { "h": 6, "w": 6, "x": 18, "y": 0 },
+      "id": 4,
+      "title": "Processing Freshness (seconds)",
+      "type": "stat",
+      "targets": [
+        { "expr": "time() - max(bk_pipeline_last_success_unixtime{service=\"analytics\"})", "legendFormat": "Seconds since last commit" }
+      ]
+    },
+    {
+      "collapsed": false,
+      "gridPos": { "h": 10, "w": 12, "x": 0, "y": 6 },
+      "id": 5,
+      "title": "Kafka Lag Over Time by Partition",
+      "type": "timeseries",
+      "targets": [
+        { "expr": "bk_kafka_consumer_lag_records{group=\"realtime-analytics-v1\"}", "legendFormat": "P-{{partition}}" }
+      ]
+    },
+    {
+      "collapsed": false,
+      "gridPos": { "h": 10, "w": 12, "x": 12, "y": 6 },
+      "id": 6,
+      "title": "Pipeline Events Rate (Accepted vs Error/Duplicate)",
+      "type": "timeseries",
+      "targets": [
+        { "expr": "sum by (result) (rate(bk_pipeline_events_total{service=\"analytics\"}[1m]))", "legendFormat": "{{result}}" }
+      ]
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": ["ecommerce", "pipeline", "realtime"],
+  "time": { "from": "now-15m", "to": "now" },
+  "timepicker": {},
+  "timezone": "utc",
+  "title": "E-Commerce Pipeline Observability",
+  "uid": "pipeline-health",
+  "version": 1
+}

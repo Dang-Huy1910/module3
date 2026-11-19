@@ -1,0 +1,18 @@
+{
+  "event_id": "evt-order-invalid-001",
+  "event_type": "OrderCreated",
+  "event_version": 1,
+  "event_time": "2026-11-02T10:00:05Z",
+  "source": "order-simulator",
+  "order_id": "ORD-INVALID",
+  "customer_id": "CUS-001",
+  "items": [
+    {
+      "product_id": "P-101",
+      "quantity": 2,
+      "unit_price": 100000
+    }
+  ],
+  "total_amount": 999999,
+  "currency": "VND"
+}

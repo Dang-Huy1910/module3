@@ -1,0 +1,20 @@
+groups:
+  - name: pipeline_alerts
+    rules:
+      - alert: AnalyticsTargetDown
+        expr: up{job="analytics"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Analytics consumer instance is DOWN"
+          description: "Service 'analytics' has been unreachable for more than 1 minute."
+
+      - alert: KafkaConsumerLagHigh
+        expr: sum(bk_kafka_consumer_lag_records{group="realtime-analytics-v1"}) > 50
+        for: 30s
+        labels:
+          severity: warning
+        annotations:
+          summary: "Consumer lag is accumulating"
+          description: "Lag for realtime-analytics-v1 is over 50 records."
